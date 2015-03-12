@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
   
   #Creates and assigns the activation token and digest.
   def create_activation_digest
-    self.activaion_token = User.new_token
+    self.activation_token = User.new_token
     self.activation_digest = User.digest(activation_token)
   end
   
