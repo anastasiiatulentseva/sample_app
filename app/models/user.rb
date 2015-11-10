@@ -69,6 +69,11 @@ class User < ActiveRecord::Base
     reset_sent_at < 2.hours.ago
   end
   
+  # Defines a proto-feed.
+  def feed
+    Micropost.where("user_id = ?", id)
+  end
+  
   private
   
   #Converts email to all lower-case
@@ -81,6 +86,8 @@ class User < ActiveRecord::Base
     self.activation_token = User.new_token
     self.activation_digest = User.digest(activation_token)
   end
+  
+  
   
   
 end
